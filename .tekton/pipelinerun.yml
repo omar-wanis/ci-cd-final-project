@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: cd-pipeline-run-
+spec:
+  pipelineRef:
+    name: cd-pipeline
+  serviceAccountName: pipeline
+  workspaces:
+    - name: pipeline-workspace
+      persistentVolumeClaim:
+        claimName: oc-lab-pvc
